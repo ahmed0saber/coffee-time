@@ -9,7 +9,7 @@ body{
     background: #080808;
 }
 .home{
-    height: calc(100vh - 48px);
+    min-height: calc(100vh - 48px);
     width: 100%;
     background: #121212 url(./images/home.jpg) no-repeat center top;
     background-size: cover;
@@ -34,15 +34,11 @@ body{
     border-right: .15em solid #f9fdff00;
     white-space: nowrap;
     margin: 0 auto;
-    animation: typing 4s steps(40, end),blink-caret 1s step-end 2;
+    animation: typing 4s steps(40, end);
 }
 @keyframes typing {
     from {width: 0}
     to {width: 100%}
-}
-@keyframes blink-caret {
-    from, to {border-color: transparent}
-    50% {border-color: #f9fdff;}
 }
 .icons li a{
     height: 40px;
@@ -88,6 +84,18 @@ body{
 }
 .about-pic{
     border-radius: 10% 70px 50% 100px;
+    transition-duration: 0.35s;
+}
+.about-pic:hover{
+    border-radius: 4px;
+}
+.about-img{
+    transform: rotate3d(4, -1, -1, -45deg);
+    transition-duration: 0.3s;
+}
+.about-img:hover{
+    transform: rotate3d(1, 1, 1, 0deg);
+    /*transform: rotate(45deg);*/
 }
 .input-group-prepend span{
     height: 100%;
@@ -137,7 +145,6 @@ form button.btn:hover i{
     width: fit-content;
 	margin: 0;
 	padding: 0;
-	background: #fff;
 	overflow: hidden;
 }
 .product figure::before {
@@ -187,6 +194,16 @@ form button.btn:hover i{
     border: 2px solid #864108;
     color: #864108;
 }
+.info a.second-btn{
+    background-color: #8a6a4a;
+    border: 2px solid #12121238;
+    color: #f7f7f7;
+}
+.info a.second-btn:hover{
+    background-color: #12121238;
+    border: 2px solid #8a6a4a;
+    color: #8a6a4a;
+}
 .info1, .info2{
     flex-direction: row;
     justify-content: space-between;
@@ -203,11 +220,44 @@ form button.btn:hover i{
     font-size: 32px;
     transition-duration: 0.3s;
     cursor: pointer;
+}
+.fav .not-fav{
     color: #f7f7f7;
     text-shadow: 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 5px #000, 0px 0px 6px #323232;
 }
-.fav .fa:hover{
+.fav .not-fav:hover{
+    /*color: #e40a0a;
+    text-shadow: none;*/
+    animation: fav1 0.3s linear;
+}
+@keyframes fav1 {
+    0%{
+        color: #e40a0a;
+        text-shadow: none;
+    }
+    100%{
+        color: #e40a0a;
+        text-shadow: none;
+    }
+}
+.fav .faved{
     color: #e40a0a;
+    text-shadow: none;
+}
+.fav .faved:hover{
+    /*color: #f7f7f7;
+    text-shadow: none;*/
+    animation: fav2 0.3s linear;
+}
+@keyframes fav2 {
+    0%{
+        color: #f7f7f7;
+        text-shadow: none;
+    }
+    100%{
+        color: #f7f7f7;
+        text-shadow: none;
+    }
 }
 .sale{
     position: absolute;
@@ -217,6 +267,9 @@ form button.btn:hover i{
     background-color: #f00;
     padding: 3px 20px;
     z-index: 20;
+    /*background: radial-gradient(ellipse at 50%, #0000 0%, #0000 65%, #f00 65%, #f00 100%) 0px -24px no-repeat,
+    linear-gradient(to bottom, #0000 0%, #0000 20%, #f00 20%, #f00 100%);
+    border-radius: 0 0 25% 25%;*/
 }
 .sale::after{
     content: '';
@@ -228,6 +281,8 @@ form button.btn:hover i{
     background-image: linear-gradient(to bottom right, #ff0000ee 0%, #ff0000ce 20%, #ff00007e 60%);
     padding: 18px 11px;
     z-index: -1;
+    /*background-image: linear-gradient(305deg, #ff00007e 0%, #ff0000ae 35%, #ff0000ee 50%, #ff000000 50%, #ff000000 100%);
+    border-radius: 100% 0 0 0;*/
 }
 .sale::before{
     content: '';
@@ -239,6 +294,8 @@ form button.btn:hover i{
     background-image: linear-gradient(to bottom right, #ff0000ee 0%, #ff0000ce 20%, #ff00007e 60%);
     padding: 11px 18px;
     z-index: -1;
+    /*background-image: linear-gradient(325deg, #ff00007e 0%, #ff0000ae 35%, #ff0000ee 50%, #ff000000 50%, #ff000000 100%);
+    border-radius: 100% 0 0 0;*/
 }
 .info{
     position: absolute;
@@ -249,7 +306,7 @@ form button.btn:hover i{
     width: calc(100% - 48px);
 }
 .contact{
-    height: calc(100vh - 48px);
+    min-height: calc(100vh - 48px);
     width: 100%;
     background: #121212 url(./images/contact.jpg) no-repeat left center;
     background-size: cover;
@@ -263,4 +320,20 @@ form button.btn:hover i{
     background-color: #08080821;
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
+}
+.contact form label{
+    position: relative;
+    top: 9px;
+    left: 0px;
+    background-color: #f7f7f7;
+    color: #080808;
+    padding: 1px 3px;
+    border: 1px solid #08080812;
+    border-radius: 8px 8px 0px 0px;
+    z-index: 0;
+}
+.contact form input[type="text"], .contact form input[type="email"], .contact form textarea{
+    background-color: #f7f7f7;
+    position: relative;
+    z-index: 1;
 }
