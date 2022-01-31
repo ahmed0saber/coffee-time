@@ -8,11 +8,6 @@ function add_to_fav(element){
         $(element).addClass('faved');
     }
 }
-/*     CURVED TEXT "Our Products"     */
-curved = document.getElementsByClassName("curved");
-for(var i=0; i<curved.length; i++){
-    new CircleType(curved[i]).radius(720);
-}
 /*     TOGGLE NAVBAR LINKS 'active' CLASS     */
 window.addEventListener('scroll', function() {
 	var check_points = document.getElementsByClassName('check-point');
